@@ -6,7 +6,12 @@
   "postStartCommand": "script/bootstrap",
   "containerEnv": { "DEVCONTAINER": "1" },
   "appPort": ["8123:8123"],
-  "runArgs": ["-e", "GIT_EDITOR=code --wait",  "--security-opt", "label=disable"],
+  "runArgs": ["-e", "GIT_EDITOR=code --wait","--userns=keep-id:uid=1000,gid=1000"],
+  "containerUser": "vscode",
+  "updateRemoteUserUID": true,
+  "containerEnv": {
+    "HOME": "/home/vscode"
+  },
   "extensions": [
     "ms-python.vscode-pylance",
     "visualstudioexptteam.vscodeintellicode",
